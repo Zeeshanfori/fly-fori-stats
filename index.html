@@ -23,20 +23,17 @@
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
     .card{background:var(--card);border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(2,6,23,0.6);}
 
-    /* Metric cards */
     .metrics{grid-column:span 12;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
     .metric{background:var(--glass);padding:12px;border-radius:10px}
     .metric .label{font-size:12px;color:var(--muted)}
     .metric .value{font-weight:700;font-size:18px;margin-top:6px}
     .metric .trend{font-size:12px;color:var(--accent);margin-left:6px}
 
-    /* Charts layout */
     .big-chart{grid-column:span 8}
     .side-charts{grid-column:span 4;display:flex;flex-direction:column;gap:12px}
     .chart-wrap{height:320px}
     .small-chart{height:150px}
 
-    /* Favorites and lists */
     .list{padding:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:10px}
     .list h3{margin:0 0 8px 0;font-size:13px}
     .fav{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.02)}
@@ -44,7 +41,6 @@
 
     footer{margin-top:18px;color:var(--muted);font-size:13px}
 
-    /* Responsive */
     @media (max-width:900px){
       .metrics{grid-template-columns:repeat(2,1fr)}
       .big-chart{grid-column:span 12}
@@ -73,11 +69,11 @@
         </div>
         <div class="metric">
           <div class="label">Public Bookings</div>
-          <div class="value">101 → 200 <span class="trend">(+98%)</span></div>
+          <div class="value">101 → 252.5 <span class="trend">(+150%)</span></div>
         </div>
         <div class="metric">
           <div class="label">Private Bookings</div>
-          <div class="value">13 → 85 <span class="trend">(+554%)</span></div>
+          <div class="value">13 → 32.5 <span class="trend">(+150%)</span></div>
         </div>
         <div class="metric">
           <div class="label">No. of Cars</div>
@@ -97,26 +93,26 @@
 
         <div class="card list">
           <h3>Key Environmental Impact</h3>
-          <div class="fav"><strong>CO₂ Saved</strong><span>570 kg</span></div>
-          <div class="fav"><strong>Trees Relaxed</strong><span>42</span></div>
-          <div class="fav"><strong>Green Space</strong><span>425.0 m²</span></div>
-          <div class="fav"><strong>Parking Spaces Saved</strong><span>17</span></div>
+          <div class="fav"><strong>CO₂ Saved</strong><span>570 kg → 1425 kg</span></div>
+          <div class="fav"><strong>Trees Relaxed</strong><span>42 → 105</span></div>
+          <div class="fav"><strong>Green Space</strong><span>425 m² → 1062.5 m²</span></div>
+          <div class="fav"><strong>Parking Spaces Saved</strong><span>17 → 42.5</span></div>
         </div>
       </div>
 
       <div class="card" style="grid-column:span 6">
         <h3 style="margin-top:0">Favorite Cars</h3>
-        <div class="fav"><div>Favourite Car (Private)</div><div>Opel / Vauxhall (EF34228)</div></div>
-        <div class="fav"><div>Favourite Car (Public)</div><div>Opel / Vauxhall (EF24448)</div></div>
-        <div style="margin-top:10px;color:var(--muted);font-size:13px">Peak Hours (Public): 9 am - 10 am<br>Peak Hours (Private): 2 pm - 3 pm<br>Daily Avg Hours: 2.45 hrs</div>
+        <div class="fav"><div>Favourite Car (Private)</div><div>Opel / Vauxhall (EF34228) → -</div></div>
+        <div class="fav"><div>Favourite Car (Public)</div><div>Opel / Vauxhall (EF24448) → -</div></div>
+        <div style="margin-top:10px;color:var(--muted);font-size:13px">Peak Hours (Public): 9 am - 10 am<br>Peak Hours (Private): 2 pm - 3 pm<br>Daily Avg Hours: 2.45 hrs → 6.125 hrs</div>
       </div>
 
       <div class="card" style="grid-column:span 6">
         <h3 style="margin-top:0">Revenue & Distances</h3>
-        <div class="fav"><strong>Revenue</strong><span>8000 kr → 8000 kr</span></div>
+        <div class="fav"><strong>Revenue</strong><span>8000 kr → 20000 kr</span></div>
         <div class="fav"><strong>Total Distance</strong><span>3500 Km → 8750 Km</span></div>
-        <div class="fav"><strong>Private Hours</strong><span>118 hrs</span></div>
-        <div class="fav"><strong>Public Hours</strong><span>181 hrs</span></div>
+        <div class="fav"><strong>Private Hours</strong><span>118 hrs → 295 hrs</span></div>
+        <div class="fav"><strong>Public Hours</strong><span>181 hrs → 452.5 hrs</span></div>
       </div>
 
     </section>
@@ -124,10 +120,8 @@
     <footer>Tip: hover over the charts to see exact values. Use the export buttons (top-right of charts) to save images.</footer>
   </div>
 
-  <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    // Data from user
     const last30 = {
       totalBookings:114,
       publicBookings:101,
@@ -144,30 +138,28 @@
     }
     const next30 = {
       totalBookings:285,
-      publicBookings:200,
-      privateBookings:85,
+      publicBookings:252.5,
+      privateBookings:32.5,
       totalDistance:8750,
-      co2:570,
-      trees:42,
-      parking:17,
-      greenSpace:425.0,
-      revenue:8000,
-      privateHours:118,
-      publicHours:181,
+      co2:1425,
+      trees:105,
+      parking:42.5,
+      greenSpace:1062.5,
+      revenue:20000,
+      privateHours:295,
+      publicHours:452.5,
       cars:10
     }
 
-    // Set generated date
     document.querySelector('header small').textContent = new Date().toLocaleString();
 
-    // Comparison grouped bar chart
     const ctx = document.getElementById('comparisonChart').getContext('2d');
     const comparisonChart = new Chart(ctx, {
       type: 'bar',
       data: {
         labels: ['Total Bookings','Public Bookings','Private Bookings','Total Distance (Km)','CO₂ Saved (kg)','Trees','Parking Spaces','Green Space (m²)','Revenue (kr)','Private Hours','Public Hours','No of Cars'],
         datasets:[
-          {label:'Last 30 Days', data:[last30.totalBookings,last30.publicBookings,last30.privateBookings,last30.totalDistance,last30.co2,last30.trees,last30.parking,last30.greenSpace,last30.revenue,last30.privateHours,last30.publicHours,last30.cars], backgroundColor:'rgba(255,193,7,0.9)'.replace('0.9','0.8'), borderRadius:6},
+          {label:'Last 30 Days', data:[last30.totalBookings,last30.publicBookings,last30.privateBookings,last30.totalDistance,last30.co2,last30.trees,last30.parking,last30.greenSpace,last30.revenue,last30.privateHours,last30.publicHours,last30.cars], backgroundColor:'rgba(255,193,7,0.8)', borderRadius:6},
           {label:'Next 30 Days Outlook', data:[next30.totalBookings,next30.publicBookings,next30.privateBookings,next30.totalDistance,next30.co2,next30.trees,next30.parking,next30.greenSpace,next30.revenue,next30.privateHours,next30.publicHours,next30.cars], backgroundColor:'rgba(6,182,212,0.85)', borderRadius:6}
         ]
       },
@@ -186,7 +178,6 @@
       }
     });
 
-    // Bookings pie chart
     const pieCtx = document.getElementById('bookingsPie').getContext('2d');
     const bookingsPie = new Chart(pieCtx, {
       type:'doughnut',
@@ -200,7 +191,6 @@
       }
     });
 
-    // Optional: add export image button on right-click (simple helper)
     function addSaveButton(chart, label){
       const btn = document.createElement('button');
       btn.textContent = 'Save as PNG';
@@ -217,13 +207,11 @@
         const url = chart.toBase64Image();
         const a = document.createElement('a'); a.href=url; a.download = label + '.png'; a.click();
       };
-      // put on chart's canvas parent
       chart.canvas.parentNode.style.position='relative';
       chart.canvas.parentNode.appendChild(btn);
     }
     addSaveButton(comparisonChart, 'comparison-chart');
     addSaveButton(bookingsPie, 'bookings-pie');
-
   </script>
 </body>
 </html>
