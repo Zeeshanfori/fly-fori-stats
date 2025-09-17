@@ -163,6 +163,30 @@ footer{margin-top:18px;color:var(--muted);font-size:13px}
     </tbody>
   </table>
 </div>
+<div class="card" style="margin-top:20px; grid-column:span 12">
+  <h3 style="margin-top:0">📩 Submit Feedback</h3>
+  <form id="feedbackForm">
+    <label>
+      Name:<br>
+      <input type="text" name="name" required style="width:100%;padding:8px;margin:6px 0">
+    </label>
+    <br>
+    <label>
+      Email:<br>
+      <input type="email" name="email" required style="width:100%;padding:8px;margin:6px 0">
+    </label>
+    <br>
+    <label>
+      Message:<br>
+      <textarea name="message" required style="width:100%;padding:8px;margin:6px 0"></textarea>
+    </label>
+    <br>
+    <button type="submit" style="padding:10px 16px;background:#06b6d4;border:none;border-radius:6px;color:white;cursor:pointer">
+      Submit
+    </button>
+  </form>
+  <p id="formStatus" style="color:var(--muted);margin-top:10px"></p>
+</div>
 
 <footer>Tip: hover over the charts to see exact values. Use the export buttons (top-right of charts) to save images.</footer>
 </div>
@@ -278,5 +302,39 @@ addSaveButton(comparisonChart, 'comparison-chart');
 addSaveButton(bookingsPie, 'bookings-pie');
 
 </script>
+    <script>
+  const form = document.getElementById("feedbackForm");
+  const status = document.getElementById("formStatus");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    status.textContent = "⏳ Submitting...";
+
+    const formData = {
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value
+    };
+
+    try {
+      const res = await fetch("https://zeeshanzafar557.app.n8n.cloud/webhook-test/2c762a4a-8173-4b09-bd54-f72dad16d0b0", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+
+      if (res.ok) {
+        status.textContent = "✅ Thank you! Your feedback was submitted.";
+        form.reset();
+      } else {
+        status.textContent = "❌ Submission failed, try again.";
+      }
+    } catch (err) {
+      console.error(err);
+      status.textContent = "⚠️ Network error.";
+    }
+  });
+</script>
+
 </body>
 </html>
